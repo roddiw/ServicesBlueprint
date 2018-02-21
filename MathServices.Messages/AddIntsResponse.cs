@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace MathService.Messages
+namespace MathServices.Messages
 {
     public class AddIntsResponse : BaseResponse
     {

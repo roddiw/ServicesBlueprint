@@ -1,4 +1,4 @@
-﻿using MathService.Messages;
+﻿using MathServices.Messages;
 using System.ServiceModel;
 
 namespace MathServices

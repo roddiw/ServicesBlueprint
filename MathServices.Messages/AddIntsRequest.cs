@@ -1,7 +1,7 @@
 ﻿using Common.RequestProcessing.Messages;
 using System.Runtime.Serialization;
 
-namespace MathService.Messages
+namespace MathServices.Messages
 {
     [DataContract]
     public class AddIntsRequest : BaseRequest

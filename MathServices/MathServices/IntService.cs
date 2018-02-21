@@ -1,5 +1,5 @@
 ﻿using Common.RequestProcessing;
-using MathService.Messages;
+using MathServices.Messages;
 using MathServices.Processing;
 
 namespace MathServices

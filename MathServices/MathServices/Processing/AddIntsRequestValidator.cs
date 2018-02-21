@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MathService.Messages;
+using MathServices.Messages;
 
 namespace MathServices.Processing
 {
