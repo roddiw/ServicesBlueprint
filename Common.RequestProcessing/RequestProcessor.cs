@@ -37,7 +37,8 @@ namespace Common.RequestProcessing
 
         public TResponse Execute<TRequest, TResponse>(
             TRequest request,
-            IAction<TRequest, TResponse> action)
+            IAction<TRequest, TResponse> action,
+            IValidator<TRequest> validator = null)
             where TRequest : BaseRequest
             where TResponse : BaseResponse, new()
         {
@@ -49,6 +50,7 @@ namespace Common.RequestProcessing
                 //
                 // audit log request
                 //
+
                 string requestName = request.GetType().FullName;
                 try
                 {
@@ -68,7 +70,7 @@ namespace Common.RequestProcessing
                 //
 
 
-                List<ResponseError> validationErrors = GetValidationErrors(request);
+                List<ResponseError> validationErrors = GetValidationErrors(request, validator);
                 if (validationErrors.Count > 0)
                 {
                     response = new TResponse();
@@ -137,7 +139,9 @@ namespace Common.RequestProcessing
             return $"{heading} Correlation: {correlationID}\r\n{Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.None)}";
         }
 
-        private List<ResponseError> GetValidationErrors<TRequest>(TRequest request) where TRequest : BaseRequest
+        private List<ResponseError> GetValidationErrors<TRequest>(
+            TRequest request,
+            IValidator<TRequest> validator) where TRequest : BaseRequest
         {
             var validationErrors = new List<ResponseError>();
 
@@ -149,6 +153,18 @@ namespace Common.RequestProcessing
                 foreach (ValidationFailure error in results.Errors)
                 {
                     validationErrors.Add(new ResponseError(ErrorCode.ValidationError, error.PropertyName, error.ErrorMessage));
+                }
+            }
+
+            if (validator != null)
+            {
+                results = validator.Validate(request);
+                if (!results.IsValid)
+                {
+                    foreach (ValidationFailure error in results.Errors)
+                    {
+                        validationErrors.Add(new ResponseError(ErrorCode.ValidationError, error.PropertyName, error.ErrorMessage));
+                    }
                 }
             }
 

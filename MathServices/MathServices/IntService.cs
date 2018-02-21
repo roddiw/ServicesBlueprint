@@ -8,7 +8,7 @@ namespace MathServices
 	{
 		public AddIntsResponse AddInts(AddIntsRequest request)
         {
-            return Resolver.Get<RequestProcessor>().Execute<AddIntsRequest, AddIntsResponse>(request, Resolver.Get<AddIntsAction>());
+            return Resolver.Get<RequestProcessor>().Execute<AddIntsRequest, AddIntsResponse>(request, Resolver.Get<AddIntsAction>(), Resolver.Get<AddIntsRequestValidator>());
 		}
 	}
 }
