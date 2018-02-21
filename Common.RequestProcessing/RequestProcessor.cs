@@ -1,7 +1,10 @@
 ﻿using Common.AuditLogging;
 using Common.RequestProcessing.Messages;
+using FluentValidation;
+using FluentValidation.Results;
 using log4net;
 using System;
+using System.Collections.Generic;
 
 namespace Common.RequestProcessing
 {
@@ -64,7 +67,17 @@ namespace Common.RequestProcessing
                 // execute request
                 //
 
-                response = action.Execute(request);
+
+                List<ResponseError> validationErrors = GetValidationErrors(request);
+                if (validationErrors.Count > 0)
+                {
+                    response = new TResponse();
+                    response.Errors = validationErrors;
+                }
+                else
+                {
+                    response = action.Execute(request);
+                }
             }
             catch (Exception ex)
             {
@@ -122,6 +135,24 @@ namespace Common.RequestProcessing
             object obj)
         {
             return $"{heading} Correlation: {correlationID}\r\n{Newtonsoft.Json.JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.None)}";
+        }
+
+        private List<ResponseError> GetValidationErrors<TRequest>(TRequest request) where TRequest : BaseRequest
+        {
+            var validationErrors = new List<ResponseError>();
+
+            ValidatorOptions.CascadeMode = CascadeMode.StopOnFirstFailure;
+            var baseRequestValidator = new BaseRequestValidator();
+            ValidationResult results = baseRequestValidator.Validate((BaseRequest)request);
+            if (!results.IsValid)
+            {
+                foreach (ValidationFailure error in results.Errors)
+                {
+                    validationErrors.Add(new ResponseError(ErrorCode.ValidationError, error.PropertyName, error.ErrorMessage));
+                }
+            }
+
+            return validationErrors;
         }
     }
 }

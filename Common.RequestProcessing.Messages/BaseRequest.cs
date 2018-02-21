@@ -2,24 +2,23 @@
 
 namespace Common.RequestProcessing.Messages
 {
-    // TODO property validation
     [DataContract]
     public class BaseRequest
     {
         /// <summary>
-        /// Mandatory. NonWhiteSpaceString(1, 100). 
+        /// Mandatory. Non empty and 100 characters or less. 
         /// </summary>
         [DataMember]
         public string RequestID { get; set; }
 
         /// <summary>
-        /// Mandatory. NonWhiteSpaceString(1, 100). 
+        /// Mandatory. Non empty and 100 characters or less. 
         /// </summary>
         [DataMember]
         public string RequestingSystem { get; set; }
 
         /// <summary>
-        /// Mandatory. NonWhiteSpaceString(1, 100). 
+        /// Mandatory. Non empty and 100 characters or less. 
         /// </summary>
         [DataMember]
         public string RequestingUser { get; set; }
