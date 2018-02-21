@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4118C3F7-6516-4031-9B71-0C8486A4C5D7}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>MathServices</RootNamespace>
-    <AssemblyName>MathServices</AssemblyName>
+    <ProjectGuid>{95B82B52-3D9D-4B29-A474-E91A9E6094CB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Common.RequestProcessing</RootNamespace>
+    <AssemblyName>Common.RequestProcessing</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,15 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <HintPath>..\MathServices\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\MathServices\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,40 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigFileSettings.cs" />
-    <Compile Include="IIntService.cs" />
-    <Compile Include="IntService.cs" />
-    <Compile Include="ISettings.cs" />
-    <Compile Include="Processing\AddIntsAction.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="IAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resolver.cs" />
+    <Compile Include="RequestProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common.AuditLogging\Common.AuditLogging.csproj">
+    <ProjectReference Include="..\Common.AuditLogging\Common.AuditLogging.csproj">
       <Project>{8b80e0c0-5809-490e-95e4-636b253a8bc2}</Project>
       <Name>Common.AuditLogging</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common.RequestProcessing.Messages\Common.RequestProcessing.Messages.csproj">
+    <ProjectReference Include="..\Common.RequestProcessing.Messages\Common.RequestProcessing.Messages.csproj">
       <Project>{d1e72372-fd07-4cec-b2c9-29a48d4ff658}</Project>
       <Name>Common.RequestProcessing.Messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common.RequestProcessing\Common.RequestProcessing.csproj">
-      <Project>{95b82b52-3d9d-4b29-a474-e91a9e6094cb}</Project>
-      <Name>Common.RequestProcessing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Common.SystemExtensions\Common.SystemExtensions.csproj">
-      <Project>{bc22572a-a8cb-454d-ac1a-ef770d0657ab}</Project>
-      <Name>Common.SystemExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MathServices.Messages\MathServices.Messages.csproj">
-      <Project>{f229321d-cdbd-4c8c-a38f-449d54f52445}</Project>
-      <Name>MathServices.Messages</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

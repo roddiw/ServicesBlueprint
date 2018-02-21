@@ -1,24 +1,14 @@
-﻿using Common.AuditLogging;
+﻿using Common.RequestProcessing;
+using MathService.Messages;
+using MathServices.Processing;
 
 namespace MathServices
 {
     public class IntService : IIntService
 	{
-		public int AddInts(int number1, int number2)
+		public AddIntsResponse AddInts(AddIntsRequest request)
         {
-            var auditLog = Resolver.Get<IAuditLog>();
-            var settings = Resolver.Get<ISettings>();
-
-            int result = number1 + number2;
-
-            auditLog.Info($"Added {number1} and {number2} to get result {result}");
-
-            if (result > settings.AddIntsMaxResult)
-            {
-                result = settings.AddIntsMaxResult;
-            }
-
-            return result;
+            return Resolver.Get<RequestProcessor>().Execute<AddIntsRequest, AddIntsResponse>(request, Resolver.Get<AddIntsAction>());
 		}
 	}
 }

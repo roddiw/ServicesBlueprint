@@ -1,4 +1,5 @@
 ﻿using Common.AuditLogging;
+using Common.RequestProcessing;
 using log4net;
 using Ninject;
 
@@ -31,8 +32,11 @@ namespace MathServices
 
             kernel.Bind<ILog>().ToConstant(logger);
 
-            kernel.Bind<IAuditLog>().ToConstant(new Log4NetAuditLog(LogManager.GetLogger("Audit")));
+            IAuditLog auditLogger = new Log4NetAuditLog(LogManager.GetLogger("Audit"));
+            kernel.Bind<IAuditLog>().ToConstant(auditLogger);
             kernel.Bind<ISettings>().ToConstant(new ConfigFileSettings());
+
+            kernel.Bind<RequestProcessor>().ToConstant(new RequestProcessor(logger, auditLogger));
 
             return kernel;
         }

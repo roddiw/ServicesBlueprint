@@ -7,3 +7,9 @@ Common.AuditLogging/bin/
 Common.AuditLogging/obj/
 Common.SystemExtensions/bin/
 Common.SystemExtensions/obj/
+Common.RequestProcessing.Messages/bin/
+Common.RequestProcessing.Messages/obj/
+Common.RequestProcessing/obj/
+Common.RequestProcessing/bin/
+MathServices.Messages/obj/
+MathServices.Messages/bin/

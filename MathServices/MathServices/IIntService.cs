@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using MathService.Messages;
+using System.ServiceModel;
 
 namespace MathServices
 {
@@ -6,6 +7,6 @@ namespace MathServices
 	public interface IIntService
 	{
 		[OperationContract]
-		int AddInts(int number1, int number2);
-	}
+        AddIntsResponse AddInts(AddIntsRequest request);
+    }
 }
