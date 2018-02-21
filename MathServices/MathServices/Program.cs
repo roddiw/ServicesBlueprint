@@ -1,7 +1,7 @@
-﻿using Common.AuditLogging;
-using log4net;
+﻿using log4net;
 using log4net.Config;
 using System;
+using System.ServiceModel;
 
 namespace MathServices
 {
@@ -14,17 +14,33 @@ namespace MathServices
 
             try
             {
-                logger.Info("Service started");
+                //
+                // start service
+                //
 
-                IAuditLog auditLogger = new Log4NetAuditLog(LogManager.GetLogger("Audit"));
+                logger.Info("Attempting to start service");
 
-                ISettings settings = new ConfigFileSettings();
-                Console.WriteLine($"IntSetting setting is {settings.IntSetting}");
+                logger.Info("Attempting to open service host");
+                var serviceHost = new ServiceHost(typeof(IntService));
+                serviceHost.Open();
+                logger.Info("Successfully opened service host");
+
+                logger.Info("Successfully started service");
 
                 Console.WriteLine("Press ENTER to exit.");
                 Console.Read();
 
-                logger.Info("Service stopped");
+                //
+                // stop service
+                //
+
+                logger.Info("Attempting to stop service");
+
+                logger.Info("Attempting to close service host");
+                serviceHost.Close();
+                logger.Info("Successfully closed service host");
+
+                logger.Info("Successfully stopped service");
             }
             catch (Exception ex)
             {
