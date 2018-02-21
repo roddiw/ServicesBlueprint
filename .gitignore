@@ -1,3 +1,5 @@
 MathServices/.vs/
 MathServices/MathServices/bin/
 MathServices/MathServices/obj/
+MathServices/packages/
+*.user
