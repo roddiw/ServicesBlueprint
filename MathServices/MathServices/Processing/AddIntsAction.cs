@@ -1,5 +1,6 @@
 ﻿using Common.RequestProcessing;
 using MathService.Messages;
+using System;
 
 namespace MathServices.Processing
 {
@@ -18,7 +19,7 @@ namespace MathServices.Processing
 
             if (result > settings.AddIntsMaxResult)
             {
-                result = settings.AddIntsMaxResult;
+                throw new Exception("result is too large");
             }
 
             return new AddIntsResponse(result);
