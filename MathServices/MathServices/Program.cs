@@ -17,9 +17,11 @@ namespace MathServices
                 logger.Info("Service started");
 
                 IAuditLog auditLogger = new Log4NetAuditLog(LogManager.GetLogger("Audit"));
-                auditLogger.Info("Test audit log message");
 
-                Console.WriteLine("Service started. Press ENTER to exit.");
+                ISettings settings = new ConfigFileSettings();
+                Console.WriteLine($"IntSetting setting is {settings.IntSetting}");
+
+                Console.WriteLine("Press ENTER to exit.");
                 Console.Read();
 
                 logger.Info("Service stopped");

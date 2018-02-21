@@ -5,3 +5,5 @@ MathServices/packages/
 *.user
 Common.AuditLogging/bin/
 Common.AuditLogging/obj/
+Common.SystemExtensions/bin/
+Common.SystemExtensions/obj/
