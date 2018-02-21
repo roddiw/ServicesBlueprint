@@ -20,6 +20,10 @@ namespace MathServices
 
                 logger.Info("Attempting to start service");
 
+                logger.Info("Attempting to initialize resolver");
+                Resolver.Initialize(logger);
+                logger.Info("Successfully initialized resolver");
+
                 logger.Info("Attempting to open service host");
                 var serviceHost = new ServiceHost(typeof(IntService));
                 serviceHost.Open();
@@ -39,6 +43,10 @@ namespace MathServices
                 logger.Info("Attempting to close service host");
                 serviceHost.Close();
                 logger.Info("Successfully closed service host");
+
+                logger.Info("Attempting to dispose resolver");
+                Resolver.Dispose();
+                logger.Info("Successfully disposed resolver");
 
                 logger.Info("Successfully stopped service");
             }

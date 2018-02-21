@@ -4,11 +4,11 @@ namespace MathServices
 {
     class ConfigFileSettings : ISettings
     {
-        public int IntSetting { get; private set; }
+        public int AddIntsMaxResult { get; private set; }
 
         public ConfigFileSettings()
         {
-            IntSetting = SystemConfigurationUtil.GetIntSetting("IntSetting");
+            AddIntsMaxResult = SystemConfigurationUtil.GetIntSetting("AddIntsMaxResult");
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     interface ISettings
     {
-        int IntSetting { get; }
+        int AddIntsMaxResult { get; }
     }
 }
