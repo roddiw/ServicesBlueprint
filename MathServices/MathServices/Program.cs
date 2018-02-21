@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using Common.AuditLogging;
+using log4net;
 using log4net.Config;
 using System;
 
@@ -14,6 +15,9 @@ namespace MathServices
             try
             {
                 logger.Info("Service started");
+
+                IAuditLog auditLogger = new Log4NetAuditLog(LogManager.GetLogger("Audit"));
+                auditLogger.Info("Test audit log message");
 
                 Console.WriteLine("Service started. Press ENTER to exit.");
                 Console.Read();

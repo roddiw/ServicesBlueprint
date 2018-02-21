@@ -3,3 +3,5 @@ MathServices/MathServices/bin/
 MathServices/MathServices/obj/
 MathServices/packages/
 *.user
+Common.AuditLogging/bin/
+Common.AuditLogging/obj/
