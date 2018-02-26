@@ -10,10 +10,12 @@ namespace MathServices
         private static StandardKernel kernel;
         private static ILog logger;
 
-        public static void Initialize(ILog logger)
+        public static void Initialize(
+            ILog logger,
+            StandardKernel customKernel = null)
         {
             Resolver.logger = logger;
-            Resolver.kernel = GetKernel();
+            Resolver.kernel = customKernel ?? GetKernel();
         }
 
         public static void Dispose()

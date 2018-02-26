@@ -13,3 +13,5 @@ Common.RequestProcessing/obj/
 Common.RequestProcessing/bin/
 MathServices.Messages/obj/
 MathServices.Messages/bin/
+MathsServices.Tests/bin/
+MathsServices.Tests/obj/

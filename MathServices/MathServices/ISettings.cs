@@ -1,6 +1,6 @@
 ﻿namespace MathServices
 {
-    interface ISettings
+    public interface ISettings
     {
         int AddIntsMinNumber { get; }
         int AddIntsMaxNumber { get; }

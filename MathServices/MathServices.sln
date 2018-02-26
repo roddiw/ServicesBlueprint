@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.RequestProcessing", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathServices.Messages", "..\MathServices.Messages\MathServices.Messages.csproj", "{F229321D-CDBD-4C8C-A38F-449D54F52445}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathsServices.Tests", "..\MathsServices.Tests\MathsServices.Tests.csproj", "{F6833623-D073-450D-8CB2-86E623FEA9CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F229321D-CDBD-4C8C-A38F-449D54F52445}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F229321D-CDBD-4C8C-A38F-449D54F52445}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F229321D-CDBD-4C8C-A38F-449D54F52445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6833623-D073-450D-8CB2-86E623FEA9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6833623-D073-450D-8CB2-86E623FEA9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6833623-D073-450D-8CB2-86E623FEA9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6833623-D073-450D-8CB2-86E623FEA9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
