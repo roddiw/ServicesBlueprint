@@ -15,3 +15,9 @@ MathServices.Messages/obj/
 MathServices.Messages/bin/
 MathsServices.Tests/bin/
 MathsServices.Tests/obj/
+AppServices.Messages/bin/
+AppServices.Messages/obj/
+AppServices/.vs/
+AppServices/packages/
+AppServices/AppServices/obj/
+AppServices/AppServices/bin/
