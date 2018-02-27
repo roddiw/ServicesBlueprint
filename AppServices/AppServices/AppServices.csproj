@@ -62,6 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppService.cs" />
+    <Compile Include="Connected Services\IntService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="IAppService.cs" />
     <Compile Include="Processing\DoubleIntAction.cs" />
     <Compile Include="Program.cs" />
@@ -70,7 +75,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\IntService\IntService.wsdl" />
+    <None Include="Connected Services\IntService\IntService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IntService\IntService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IntService\IntService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\IntService\IntService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MathServices.Messages.AddIntsResponse.datasource" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\AppServices.Messages\AppServices.Messages.csproj">
@@ -89,6 +108,28 @@
       <Project>{95b82b52-3d9d-4b29-a474-e91a9e6094cb}</Project>
       <Name>Common.RequestProcessing</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MathServices.Messages\MathServices.Messages.csproj">
+      <Project>{f229321d-cdbd-4c8c-a38f-449d54f52445}</Project>
+      <Name>MathServices.Messages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\IntService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IntService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IntService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\IntService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
